@@ -67,46 +67,205 @@
         </div>
     </header>
 
-    <main class="container">
+   <main class="container">
         <div class="catalog-layout">
             <aside class="filters-sidebar">
                 <h4>Ціна до: <span id="price-val">5000</span> ₴</h4>
-                <input type="range" min="500" max="10000" value="5000" id="price-range" style="width: 100%;">
-                <button class="add-to-cart-btn" style="background: var(--ua-blue); color: white;">Застосувати</button>
+                <input type="range" min="150" max="5000" value="5000" id="price-range" style="width: 100%;">
+                <button id="apply-filter" class="add-to-cart-btn" style="background: var(--ua-blue); color: white;">Застосувати</button>
             </aside>
 
-            <section class="products-grid">
-                <div class="product-card">
+            <section class="products-grid" id="products-container">
+                
+                <div class="product-card" data-price="3200">
                     <div class="product-image-wrapper">
-                        <img src="https://tse3.mm.bing.net/th/id/OIP.9MPAMvqQQIXw8QmG7zjR6AHaLG?pid=Api&h=220&P=0">
+                        <img src="https://tse2.mm.bing.net/th/id/OIP.Kt58nrgsys7yuh_Aco6-VwHaJ3?pid=Api&h=220&P=0">
                     </div>
                     <div class="product-details">
                         <h3>Лляна сукня "Волошка"</h3>
                         <select class="size-select" id="size-1">
-                            <option value="S">S</option>
-                            <option value="M" selected>M</option>
-                            <option value="L">L</option>
+                            <option value="грн">S</option><option value="M" selected>M</option><option value="L">L</option>
                         </select>
-                        <div class="price-main">3200 ₴</div>
+                        <div class="price-main">1200 ₴</div>
                         <button class="add-to-cart-btn" onclick="addToCart(1, 'Сукня Волошка', 3200, event)">В кошик</button>
                     </div>
                 </div>
 
-                <div class="product-card">
+                <div class="product-card" data-price="2150">
                     <div class="product-image-wrapper">
-                        <img src="https://tse3.mm.bing.net/th/id/OIP.o4Fdd1X8OPJfAYQ2cf-CcQHaLH?pid=Api&h=220&P=0">
+                        <img src="https://tse2.mm.bing.net/th/id/OIP.ROXEAz6m70rWn1LfVV8gBwHaHa?pid=Api&h=220&P=0">
                     </div>
                     <div class="product-details">
                         <h3>Вишиванка "Сила"</h3>
                         <select class="size-select" id="size-2">
-                            <option value="M">M</option>
-                            <option value="L" selected>L</option>
-                            <option value="XL">XL</option>
+                            <option value="M">M</option><option value="L" selected>L</option><option value="XL">XL</option>
                         </select>
                         <div class="price-main">2150 ₴</div>
                         <button class="add-to-cart-btn" onclick="addToCart(2, 'Вишиванка Сила', 2150, event)">В кошик</button>
                     </div>
                 </div>
+
+                <div class="product-card" data-price="1250">
+                    <div class="product-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=400">
+                    </div>
+                    <div class="product-details">
+                        <h3>Худі "UA Comfort"</h3>
+                        <select class="size-select" id="size-3">
+                            <option value="S">S</option><option value="M" selected>M</option><option value="L">L</option>
+                        </select>
+                        <div class="price-main">1250 ₴</div>
+                        <button class="add-to-cart-btn" onclick="addToCart(3, 'Худі UA Comfort', 1250, event)">В кошик</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-price="450">
+                    <div class="product-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=400">
+                    </div>
+                    <div class="product-details">
+                        <h3>Футболка Basic White</h3>
+                        <select class="size-select" id="size-4">
+                            <option value="S">S</option><option value="M" selected>M</option><option value="L">L</option>
+                        </select>
+                        <div class="price-main">450 ₴</div>
+                        <button class="add-to-cart-btn" onclick="addToCart(4, 'Футболка White', 450, event)">В кошик</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-price="350">
+                    <div class="product-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=400">
+                    </div>
+                    <div class="product-details">
+                        <h3>Кепка "Brave" Black</h3>
+                        <div class="price-main">350 ₴</div>
+                        <button class="add-to-cart-btn" onclick="addToCart(5, 'Кепка Black', 350, event)">В кошик</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-price="650">
+                    <div class="product-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1591195853828-11db59a44f6b?auto=format&fit=crop&w=400">
+                    </div>
+                    <div class="product-details">
+                        <h3>Шорти Джинсові</h3>
+                        <select class="size-select" id="size-6">
+                            <option value="30">30</option><option value="32" selected>32</option><option value="34">34</option>
+                        </select>
+                        <div class="price-main">650 ₴</div>
+                        <button class="add-to-cart-btn" onclick="addToCart(6, 'Шорти Джинс', 650, event)">В кошик</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-price="1100">
+                    <div class="product-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?auto=format&fit=crop&w=400">
+                    </div>
+                    <div class="product-details">
+                        <h3>Штани Карго "Urban"</h3>
+                        <select class="size-select" id="size-7">
+                            <option value="M">M</option><option value="L" selected>L</option>
+                        </select>
+                        <div class="price-main">1100 ₴</div>
+                        <button class="add-to-cart-btn" onclick="addToCart(7, 'Штани Карго', 1100, event)">В кошик</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-price="850">
+                    <div class="product-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=400">
+                    </div>
+                    <div class="product-details">
+                        <h3>Сорочка в клітинку</h3>
+                        <select class="size-select" id="size-8">
+                            <option value="M">M</option><option value="L" selected>L</option>
+                        </select>
+                        <div class="price-main">850 ₴</div>
+                        <button class="add-to-cart-btn" onclick="addToCart(8, 'Сорочка', 850, event)">В кошик</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-price="150">
+                    <div class="product-image-wrapper">
+                        <img src="https://tse2.mm.bing.net/th/id/OIP.V4srUkStmCYRKM9vvdqsvgHaHa?pid=Api&h=220&P=0">
+                    </div>
+                    <div class="product-details">
+                        <h3>Набір шкарпеток (3 пари)</h3>
+                        <div class="price-main">150 ₴</div>
+                        <button class="add-to-cart-btn" onclick="addToCart(9, 'Шкарпетки', 150, event)">В кошик</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-price="400">
+                    <div class="product-image-wrapper">
+                        <img src="https://tse4.mm.bing.net/th/id/OIP.sJ_yEcp1knWU2HWXuM2thAHaHa?pid=Api&h=220&P=0">
+                    </div>
+                    <div class="product-details">
+                        <h3>Панама двостороння</h3>
+                        <div class="price-main">400 ₴</div>
+                        <button class="add-to-cart-btn" onclick="addToCart(10, 'Панама', 400, event)">В кошик</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-price="1400">
+                    <div class="product-image-wrapper">
+                        <img src="https://tse2.mm.bing.net/th/id/OIP.M5aE_SmvxsCUeLPka6ZG9gHaFj?pid=Api&h=220&P=0">
+                    </div>
+                    <div class="product-details">
+                        <h3>Сумка Leather Mini</h3>
+                        <div class="price-main">1400 ₴</div>
+                        <button class="add-to-cart-btn" onclick="addToCart(11, 'Сумка Mini', 1400, event)">В кошик</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-price="550">
+                    <div class="product-image-wrapper">
+                        <img src="https://tse1.mm.bing.net/th/id/OIP.OMgs5GQMSrqjVb5TJu027QHaHa?pid=Api&h=220&P=0">
+                    </div>
+                    <div class="product-details">
+                        <h3>Барсетка "Street"</h3>
+                        <div class="price-main">550 ₴</div>
+                        <button class="add-to-cart-btn" onclick="addToCart(12, 'Барсетка', 550, event)">В кошик</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-price="1850">
+                    <div class="product-image-wrapper">
+                        <img src="https://tse2.mm.bing.net/th/id/OIP.PR281mKtOIIqPhgE0n_FVQAAAA?pid=Api&h=220&P=0">
+                    </div>
+                    <div class="product-details">
+                        <h3>Костюм Sport UA</h3>
+                        <select class="size-select" id="size-13">
+                            <option value="M">M</option><option value="L" selected>L</option>
+                        </select>
+                        <div class="price-main">1850 ₴</div>
+                        <button class="add-to-cart-btn" onclick="addToCart(13, 'Костюм Sport', 1850, event)">В кошик</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-price="950">
+                    <div class="product-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=400">
+                    </div>
+                    <div class="product-details">
+                        <h3>Зіп-толстовка</h3>
+                        <div class="price-main">950 ₴</div>
+                        <button class="add-to-cart-btn" onclick="addToCart(14, 'Зіп-толстовка', 950, event)">В кошик</button>
+                    </div>
+                </div>
+
+                <div class="product-card" data-price="450">
+                    <div class="product-image-wrapper">
+                        <img src="https://tse3.mm.bing.net/th/id/OIP.MILXn9tQGuOb_vG4kjxIDAHaHa?pid=Api&h=220&P=0">
+                    </div>
+                    <div class="product-details">
+                        <h3>Ремінь Шкіряний Classic</h3>
+                        <div class="price-main">450 ₴</div>
+                        <button class="add-to-cart-btn" onclick="addToCart(15, 'Ремінь', 450, event)">В кошик</button>
+                    </div>
+                </div>
+
             </section>
         </div>
     </main>
@@ -137,6 +296,15 @@
             
             localStorage.setItem('ua_style_cart', JSON.stringify(cart));
             updateCartBadge();
+
+            // Додай цей код у свій тег <script>, щоб фільтрація ціни запрацювала:
+        document.getElementById('apply-filter').addEventListener('click', () => {
+            const maxPrice = parseInt(document.getElementById('price-range').value);
+            document.querySelectorAll('.product-card').forEach(card => {
+                const price = parseInt(card.getAttribute('data-price'));
+                card.style.display = (price <= maxPrice) ? 'block' : 'none';
+            });
+        });
             
             // Анімація кнопки
             const btn = event.currentTarget;
