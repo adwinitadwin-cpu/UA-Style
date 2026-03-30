@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Корзина</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container" style="max-width: 500px;">
+        <h2>Ваша корзина</h2>
+        <div id="cart-items">
+            </div>
+        
+        <div class="total">Итого: <span id="total-price">0</span> ₽</div>
+        
+        <button id="checkout-btn" onclick="location.href='checkout.html'">Оформить заказ</button>
+        <p id="empty-msg" style="display:none; text-align:center;">Корзина пуста</p>
+    </div>
+
+    <script>
+        // Имитация данных из магазина (обычно приходят из localStorage)
+        let cart = [
+            { id: 1, name: "Смартфон Alpha", price: 45000, count: 1 },
+            { id: 2, name: "Чехол силиконовый", price: 1500, count: 2 }
+        ];
+
+        function renderCart() {
+            const container = document.getElementById('cart-items');
+            const totalEl = document.getElementById('total-price');
+            const btn = document.getElementById('checkout-btn');
+            const msg = document.getElementById('empty-msg');
+            
+            container.innerHTML = '';
+            let total = 0;
+
+            if (cart.length === 0) {
+                btn.style.display = 'none';
+                msg.style.display = 'block';
+            }
+
+            cart.forEach((item, index) => {
+                total += item.price * item.count;
+                container.innerHTML += `
+                    <div class="item" style="align-items: center;">
+                        <div>
+                            <strong>${item.name}</strong><br>
+                            <small>${item.price} ₽ x ${item.count}</small>
+                        </div>
+                        <div>
+                            <button onclick="changeCount(${index}, -1)" style="width:30px; padding:5px; background:#ccc;">-</button>
+                            <span style="margin: 0 10px;">${item.count}</span>
+                            <button onclick="changeCount(${index}, 1)" style="width:30px; padding:5px; background:#ccc;">+</button>
+                            <button onclick="removeItem(${index})" style="width:30px; padding:5px; background:#e74c3c; margin-left:10px;">×</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            totalEl.innerText = total.toLocaleString();
+            // Сохраняем сумму для страницы оплаты
+            localStorage.setItem('lastOrderTotal', total);
+        }
+
+        function changeCount(index, delta) {
+            if (cart[index].count + delta > 0) {
+                cart[index].count += delta;
+                renderCart();
+            }
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            renderCart();
+        }
+
+        renderCart();
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

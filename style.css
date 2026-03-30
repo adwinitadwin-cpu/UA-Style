@@ -1,0 +1,337 @@
+/* 1. Налаштування змінних та скидання стилів */
+:root {
+    --ua-blue: #003566;
+    --ua-yellow: #ffc300;
+    --dark: #1d3557;
+    --light: #f8f9fa;
+    --success: #27ae60;
+    --white: #ffffff;
+    --gray: #999999;
+    --transition: 0.3s ease;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    margin: 0;
+    background: var(--light);
+    color: var(--dark);
+    scroll-behavior: smooth;
+}
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+
+/* 2. Хедер та Навігація */
+.main-header {
+    background: var(--ua-blue);
+    color: var(--white);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.header-grid {
+    display: grid;
+    grid-template-columns: auto auto 1fr auto;
+    align-items: center;
+    gap: 30px;
+}
+
+.logo { font-size: 24px; font-weight: 800; text-decoration: none; color: var(--white); }
+.logo span { color: var(--ua-yellow); }
+
+.catalog-btn {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid var(--ua-yellow);
+    color: var(--white);
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+.catalog-btn:hover { background: var(--ua-yellow); color: var(--ua-blue); }
+
+.search-bar { display: flex; }
+.search-bar input {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 8px 0 0 8px;
+    border: none;
+    outline: none;
+}
+.search-bar button {
+    background: var(--ua-yellow);
+    border: none;
+    padding: 0 15px;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--white);
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0.8;
+    transition: var(--transition);
+}
+.nav-link:hover, .nav-link.active { opacity: 1; color: var(--ua-yellow); }
+
+.badge {
+    background: var(--ua-yellow);
+    color: var(--ua-blue);
+    font-size: 11px;
+    padding: 2px 7px;
+    border-radius: 10px;
+    font-weight: 900;
+}
+
+/* 3. Hero та Промо-слайдер */
+.hero, .slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+}
+
+.hero {
+    height: 70vh;
+    background: linear-gradient(rgba(0,53,102,0.6), rgba(0,53,102,0.6)), 
+                url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200') center/cover;
+}
+
+.hero-content h1 { font-size: 3.5rem; margin-bottom: 10px; }
+.hero-content h1 span { color: var(--ua-yellow); }
+
+.promo-slider {
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.slide-content h2 { font-size: 48px; margin: 10px 0; text-transform: uppercase; }
+
+/* 4. Картки товарів (Об'єднані стилі) */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.product-card {
+    background: var(--white);
+    border-radius: 15px;
+    overflow: hidden;
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid #eee;
+    position: relative;
+}
+
+.product-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+
+.product-image-wrapper { height: 350px; overflow: hidden; }
+.product-image-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+.product-card:hover img { transform: scale(1.1); }
+
+.product-details { padding: 20px; text-align: center; }
+
+.product-badge {
+    position: absolute; top: 15px; left: 15px;
+    padding: 5px 12px; border-radius: 6px; font-size: 12px; font-weight: bold; color: var(--white); z-index: 2;
+}
+.product-badge.hit { background: #ff4d4d; }
+.product-badge.sale { background: var(--ua-yellow); color: var(--ua-blue); }
+
+.price-main { font-size: 20px; font-weight: 800; color: var(--ua-blue); }
+.price-old { text-decoration: line-through; color: var(--gray); margin-right: 10px; }
+.price-sale { color: #e74c3c; font-weight: bold; font-size: 20px; }
+
+.add-to-cart-btn {
+    width: 100%; padding: 12px; background: var(--ua-blue); color: var(--white); border: none;
+    border-radius: 8px; margin-top: 15px; cursor: pointer; font-weight: bold; transition: var(--transition);
+}
+.add-to-cart-btn:hover { background: var(--dark); }
+
+/* 5. Категорії та Переваги */
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.category-card {
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.cat-overlay {
+    position: absolute; inset: 0;
+    background: rgba(0,0,0,0.3);
+    display: flex; align-items: center; justify-content: center;
+    transition: var(--transition);
+}
+.cat-overlay h3 { color: var(--white); font-size: 24px; text-transform: uppercase; }
+.category-card:hover .cat-overlay { background: rgba(0,53,102,0.7); }
+
+.benefits-grid, .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.benefit-item i, .feature-item i { font-size: 40px; color: var(--ua-blue); margin-bottom: 15px; }
+
+/* 6. Модальне вікно */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 2000; 
+    inset: 0;
+    background-color: rgba(0,0,0,0.6);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: var(--white);
+    margin: 5% auto;
+    padding: 30px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 500px;
+    position: relative;
+    animation: slideDown 0.4s ease;
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* 7. Футер */
+.main-footer { background: #1a1a1a; color: var(--white); padding: 60px 0 20px; margin-top: 60px; }
+.footer-top { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
+.footer-col h4 { color: var(--ua-yellow); margin-bottom: 20px; }
+.footer-links { list-style: none; padding: 0; }
+.footer-links a { color: #ccc; text-decoration: none; transition: var(--transition); }
+.footer-links a:hover { color: var(--white); padding-left: 5px; }
+
+/* 8. Адаптивність */
+@media (max-width: 768px) {
+    .header-grid { grid-template-columns: auto 1fr auto; }
+    .catalog-btn, .nav-menu { display: none; }
+    .categories-grid { grid-template-columns: 1fr; }
+    .hero-content h1 { font-size: 2.5rem; }
+}
+
+.py-60 { padding: 60px 0; }
+.text-center { text-align: center; }
+
+/* Основные стили оформления */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+h2 {
+    margin-top: 0;
+    color: #333;
+    font-size: 24px;
+    text-align: center;
+}
+
+/* Стили для элементов корзины */
+.item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.total {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: right;
+    margin: 20px 0;
+    color: #27ae60;
+}
+
+/* Стили форм */
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #666;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-sizing: border-box; /* Чтобы padding не раздувал ширину */
+    font-size: 16px;
+}
+
+.row {
+    display: flex;
+    gap: 15px;
+}
+
+/* Кнопки */
+button {
+    width: 100%;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Список заказов */
+.order-card {
+    background: #f9f9f9;
+    border-left: 5px solid #007bff;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
+}

@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UA Style | Магазин сучасного українського одягу</title>
+
+    <meta name="description"
+        content="UA-Style — сучасний український одяг з душею. Висока якість та унікальний стиль від Олени Юріївни.">
+    <meta name="keywords" content="одяг, український бренд, UA-Style, купити одяг Україна, Рахів">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/197/197572.png" type="image/png">
+
+    <style>
+        :root {
+            --ua-blue: #003566;
+            --ua-yellow: #ffc300;
+            --dark: #1a1a1a;
+            --light: #f8f9fa;
+            --success: #27ae60;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #fff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* HEADER */
+        .main-header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-menu {
+            background: var(--dark);
+            padding: 8px 0;
+        }
+
+       .flex-nav {
+    display: flex;
+    gap: 20px; /* Обов'язково додайте цей відступ! */
+    justify-content: center;
+    padding: 5px 0;
+}
+
+        .nav-link {
+            text-decoration: none;
+            color: #ccc;
+            font-weight: 500;
+            font-size: 13px;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--ua-yellow);
+        }
+
+        .header-main {
+            padding: 15px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 900;
+            text-decoration: none;
+            color: var(--ua-blue);
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: var(--ua-yellow);
+        }
+
+        .search-bar {
+            flex: 1;
+            max-width: 500px;
+            display: flex;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 10px 20px;
+            border: 2px solid #eee;
+            border-radius: 25px 0 0 25px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .search-bar input:focus {
+            border-color: var(--ua-blue);
+        }
+
+        .search-bar button {
+            padding: 10px 20px;
+            background: var(--ua-blue);
+            color: white;
+            border: none;
+            border-radius: 0 25px 25px 0;
+            cursor: pointer;
+        }
+
+        .cart-btn {
+            position: relative;
+            font-size: 22px;
+            cursor: pointer;
+            color: var(--ua-blue);
+        }
+
+        .badge {
+            background: var(--ua-yellow);
+            color: var(--ua-blue);
+            padding: 2px 6px;
+            border-radius: 50%;
+            font-size: 12px;
+            position: absolute;
+            top: -10px;
+            right: -15px;
+            font-weight: bold;
+            border: 1px solid var(--ua-blue);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            height: 70vh;
+            min-height: 400px;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 6vw, 4rem);
+            margin-bottom: 20px;
+        }
+
+        .btn-yellow {
+            padding: 15px 40px;
+            background: var(--ua-yellow);
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 30px;
+            display: inline-block;
+            transition: var(--transition);
+        }
+
+        .btn-yellow:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 195, 0, 0.3);
+        }
+
+        /* PRODUCTS */
+        .section-title {
+            text-align: center;
+            margin: 50px 0;
+            font-size: 2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--ua-yellow);
+            margin: 10px auto;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .img-box {
+            height: 320px;
+            overflow: hidden;
+            background: #f0f0f0;
+        }
+
+        .img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .p-details {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .p-details h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            height: 50px;
+            overflow: hidden;
+        }
+
+        .price {
+            font-size: 22px;
+            font-weight: 800;
+            color: var(--ua-blue);
+            margin-bottom: 15px;
+        }
+
+        .btn-buy {
+            width: 100%;
+            padding: 12px;
+            background: var(--ua-blue);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-buy:hover {
+            background: var(--dark);
+        }
+
+        /* ABOUT */
+        .about {
+            background: var(--light);
+            padding: 80px 0;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-img img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 20px 20px 0 var(--ua-yellow);
+        }
+
+        /* MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: white;
+            margin: 10% auto;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 450px;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            font-size: 30px;
+            cursor: pointer;
+        }
+
+        .order-form input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .socials {
+            margin: 20px 0;
+            font-size: 24px;
+        }
+
+        .socials a {
+            color: white;
+            margin: 0 15px;
+            transition: 0.3s;
+        }
+
+        .socials a:hover {
+            color: var(--ua-yellow);
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            .header-main {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .search-bar {
+                order: 3;
+                min-width: 100%;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+   <header class="main-header">
+    <nav class="nav-menu">
+        <div class="container flex-nav">
+            <a href="index.html" class="nav-link">Головна</a>
+            <a href="catalog.html" class="nav-link">Каталог</a>
+            <a href="about.html" class="nav-link">Про нас</a>
+            <a href="info.html" class="nav-link active">Доставка</a>
+        </div>
+    </nav>
+
+    <div class="container header-grid">
+        <a href="index.html" class="logo">UA<span>Style</span></a>
+        
+        <div id="cart-btn" style="cursor:pointer; font-weight: bold;">
+            🛒 Кошик <span class="badge" id="cart-count">0</span>
+        </div>
+    </div>
+</header>>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Стиль, що єднає <br><span>Українське серце</span></h1>
+            <p>Преміальна якість від Олени Юріївни</p>
+            <br>
+            <a href="#catalog" class="btn-yellow">ПЕРЕЙТИ ДО КАТАЛОГУ</a>
+        </div>
+    </section>
+
+    <main class="container" id="catalog">
+        <h2 class="section-title">Наші Бестселери</h2>
+
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="img-box">
+                    <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=500" alt="Футболка">
+                </div>
+                <div class="p-details">
+                    <h3>Футболка "Basic White" Cotton</h3>
+                    <div class="price">450 ₴</div>
+                    <button class="btn-buy" onclick="addToCart('Basic White', 450)">У кошик</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="img-box">
+                    <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?w=500" alt="Джинси">
+                </div>
+                <div class="p-details">
+                    <h3>Джинси "Urban Blue" Slim</h3>
+                    <div class="price">1 600 ₴</div>
+                    <button class="btn-buy" onclick="addToCart('Urban Blue', 1600)">У кошик</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="img-box">
+                    <img src="https://images.unsplash.com/photo-1556821840-3a63f95609a7?w=500" alt="Худі">
+                </div>
+                <div class="p-details">
+                    <h3>Худі "Soft Touch" Graphite</h3>
+                    <div class="price">1 150 ₴</div>
+                    <button class="btn-buy" onclick="addToCart('Soft Touch', 1150)">У кошик</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="img-box">
+                    <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=500" alt="Светр">
+                </div>
+                <div class="p-details">
+                    <h3>Светр "Winter Comfort"</h3>
+                    <div class="price">950 ₴</div>
+                    <button class="btn-buy" onclick="addToCart('Winter Comfort', 950)">У кошик</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <section class="about" id="about">
+        <div class="container about-grid">
+            <div class="about-img">
+                <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600" alt="UA Style Team">
+            </div>
+            <div class="about-text">
+                <h2 style="font-size: 2.5rem; margin-bottom: 20px;">UA Style — Твій Вибір</h2>
+                <p>Ми працюємо в місті Рахів, щоб дарувати вам найкращий сервіс та якісний одяг. Кожна річ у нашому
+                    каталозі проходить ретельний контроль якості.</p>
+                <p>Засновниця: <strong>Олена Юріївна</strong></p>
+                <br>
+                <a href="tel:+380965472737" class="btn-yellow" style="background:var(--ua-blue); color:white;">
+                    <i class="fas fa-phone"></i> +38 (096) 547-27-37
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="logo" style="color: white;">UA<span>Style</span></div>
+            <div class="socials">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-telegram"></i></a>
+            </div>
+            <p>м. Рахів, вул. Довженка | Доставка по всій Україні 🇺🇦</p>
+            <p style="margin-top: 10px; font-size: 12px; color: #777;">&copy; 2026 Всі права захищені.</p>
+        </div>
+    </footer>
+
+    <div id="order-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="close-modal">&times;</span>
+            <h2 style="margin-bottom: 20px; color: var(--ua-blue);">Оформлення замовлення</h2>
+            <p id="order-summary" style="margin-bottom: 20px; font-weight: bold;"></p>
+            <form class="order-form" id="final-form">
+                <input type="text" id="name" placeholder="Ваше Ім'я та Прізвище" required>
+                <input type="tel" id="phone" placeholder="Номер телефону" required>
+                <input type="text" id="address" placeholder="Місто та відділення Нової Пошти" required>
+                <button type="submit" class="btn-buy"
+                    style="background: var(--success); font-size: 1.1rem;">ЗАМОВИТИ</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let cart = [];
+        const cartCount = document.getElementById('cart-count');
+        const modal = document.getElementById('order-modal');
+        const orderSummary = document.getElementById('order-summary');
+
+        // Функція додавання в кошик
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            cartCount.innerText = cart.length;
+
+            // Візуальний відгук на кнопці
+            const btn = event.target;
+            btn.innerText = "Додано ✅";
+            btn.style.background = "#27ae60";
+            setTimeout(() => {
+                btn.innerText = "У кошик";
+                btn.style.background = "";
+            }, 1500);
+        }
+
+        // Відкриття модалки
+        document.getElementById('open-cart').onclick = () => {
+            if (cart.length === 0) {
+                alert("Кошик порожній. Оберіть щось гарне!");
+                return;
+            }
+            let total = cart.reduce((sum, item) => sum + item.price, 0);
+            orderSummary.innerText = `У кошику товарів: ${cart.length} на суму ${total} ₴`;
+            modal.style.display = "block";
+        }
+
+        // Закриття модалки
+        document.getElementById('close-modal').onclick = () => modal.style.display = "none";
+        window.onclick = (e) => { if (e.target == modal) modal.style.display = "none"; }
+
+        // Пошук по товарах
+        document.getElementById('search-input').oninput = (e) => {
+            const val = e.target.value.toLowerCase();
+            document.querySelectorAll('.product-card').forEach(card => {
+                const text = card.querySelector('h3').innerText.toLowerCase();
+                card.style.display = text.includes(val) ? "block" : "none";
+            });
+        }
+
+        // Відправка форми
+        document.getElementById('final-form').onsubmit = (e) => {
+            e.preventDefault();
+            const userName = document.getElementById('name').value;
+            alert(`Дякуємо, ${userName}! Олена Юріївна зв'яжеться з вами найближчим часом.`);
+            cart = [];
+            cartCount.innerText = 0;
+            modal.style.display = "none";
+            e.target.reset();
+        }
+    </script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

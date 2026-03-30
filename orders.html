@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Мои заказы</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>История заказов</h2>
+        <div id="order-list"></div>
+        <button onclick="location.href='cart.html'" style="margin-top: 20px; background: #6c757d;">Назад в магазин</button>
+    </div>
+
+    <script>
+        const orders = JSON.parse(localStorage.getItem('myOrders')) || [];
+        const container = document.getElementById('order-list');
+        
+        if(orders.length === 0) {
+            container.innerHTML = "<p style='text-align:center;'>Заказов пока нет</p>";
+        } else {
+            orders.reverse().forEach(ord => { // Новые заказы сверху
+                container.innerHTML += `
+                    <div class="order-card">
+                        <strong>Заказ №${ord.id}</strong><br>
+                        <small>${ord.date}</small><br>
+                        <span style="color: green;">Статус: ${ord.status}</span>
+                    </div>`;
+            });
+        }
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

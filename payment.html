@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Оплата</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Оплата картой</h2>
+        <form id="payment-form">
+            <label>Номер карты:</label>
+            <input type="text" placeholder="0000 0000 0000 0000" maxlength="16" required>
+            
+            <div class="row">
+                <div>
+                    <label>Срок (ММ/ГГ):</label>
+                    <input type="text" placeholder="12/26" maxlength="5" required>
+                </div>
+                <div>
+                    <label>CVC:</label>
+                    <input type="password" placeholder="***" maxlength="3" required>
+                </div>
+            </div>
+            
+            <button type="button" onclick="saveOrder()">Оплатить заказ</button>
+        </form>
+    </div>
+
+    <script>
+        function saveOrder() {
+            // Имитация сохранения заказа в LocalStorage (хранилище браузера)
+            const order = {
+                id: Date.now(),
+                date: new Date().toLocaleString(),
+                status: "Оплачен"
+            };
+            
+            let orders = JSON.parse(localStorage.getItem('myOrders')) || [];
+            orders.push(order);
+            localStorage.setItem('myOrders', JSON.stringify(orders));
+
+            alert("Заказ успешно оплачен и сохранен!");
+            location.href = 'orders.html'; // Переход к списку заказов
+        }
+
+        // Вставьте это внутрь тега <script> на странице оплаты
+const finalSum = localStorage.getItem('lastOrderTotal') || 0;
+document.querySelector('h2').innerText += ` на сумму ${finalSum} ₽`;
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

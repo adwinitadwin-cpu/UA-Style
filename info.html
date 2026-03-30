@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Доставка та Повернення | UA Style</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --ua-blue: #003566;
+            --ua-yellow: #ffc300;
+            --dark: #1a1a1a;
+            --light: #f4f7f6;
+            --white: #ffffff;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        .py-40 { padding: 40px 0; }
+
+        /* Шапка (уніфікована з іншими сторінками) */
+        .main-header { background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+        .nav-menu { background: var(--ua-blue); padding: 10px 0; }
+        .flex-nav { display: flex; gap: 20px; justify-content: center; }
+        .nav-link { color: white; text-decoration: none; font-size: 14px; font-weight: 600; opacity: 0.8; }
+        .nav-link:hover, .nav-link.active { opacity: 1; color: var(--ua-yellow); }
+
+        .header-grid { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; }
+        .logo { font-size: 24px; font-weight: bold; text-decoration: none; color: var(--ua-blue); }
+        .logo span { color: var(--ua-yellow); }
+        .badge { background: var(--ua-yellow); color: var(--ua-blue); padding: 2px 8px; border-radius: 20px; font-size: 12px; font-weight: bold; }
+
+        /* Хлібні крихти */
+        .breadcrumbs { margin-bottom: 20px; font-size: 14px; color: #777; }
+        .breadcrumbs a { color: var(--ua-blue); text-decoration: none; }
+
+        /* Контент сторінки */
+        .info-page h1 { text-align: center; color: var(--ua-blue); font-size: 2.5rem; margin-bottom: 10px; }
+        .info-section { margin-bottom: 50px; }
+        .info-section h2 { 
+            border-left: 5px solid var(--ua-yellow); 
+            padding-left: 15px; 
+            color: var(--ua-blue); 
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+        }
+
+        /* Сітка карток доставки */
+        .info-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 20px; 
+        }
+        .info-card { 
+            background: var(--light); 
+            padding: 30px; 
+            border-radius: 15px; 
+            text-align: center;
+            transition: var(--transition);
+        }
+        .info-card:hover { transform: translateY(-5px); background: #ebf2f0; }
+        .info-card .icon { font-size: 40px; margin-bottom: 15px; display: block; }
+
+        /* Списки */
+        .highlight { background: #fff9e6; padding: 25px; border-radius: 15px; border: 1px dashed var(--ua-yellow); }
+        .check-list { list-style: none; padding: 0; }
+        .check-list li { margin-bottom: 15px; position: relative; padding-left: 30px; }
+        .check-list li::before { 
+            content: "\f058"; 
+            font-family: "Font Awesome 5 Free"; 
+            font-weight: 900; 
+            position: absolute; 
+            left: 0; 
+            color: #27ae60; 
+        }
+
+        .steps-list { padding-left: 20px; }
+        .steps-list li { margin-bottom: 12px; font-weight: 500; }
+
+        .note { 
+            background: #fdf2f2; 
+            padding: 20px; 
+            border-radius: 10px; 
+            border-left: 5px solid #e74c3c; 
+            margin-top: 25px; 
+        }
+
+        /* Кнопка */
+        .btn-primary { 
+            background: var(--ua-blue); 
+            color: white; 
+            padding: 15px 30px; 
+            border-radius: 30px; 
+            font-weight: bold; 
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-primary:hover { background: var(--dark); transform: scale(1.05); }
+
+        /* Футер */
+        .main-footer { background: var(--dark); color: #ccc; padding: 40px 0; text-align: center; }
+
+        @media (max-width: 768px) {
+            .info-page h1 { font-size: 1.8rem; }
+            .flex-nav { gap: 10px; flex-wrap: wrap; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <nav class="nav-menu">
+            <div class="container flex-nav">
+                <a href="index.html" class="nav-link">Головна</a>
+                <a href="catalog.html" class="nav-link">Каталог одягу</a>
+                <a href="checkout.html" class="nav-link">Оформлення</a>
+                <a href="info.html" class="nav-link active">Доставка та повернення</a>
+            </div>
+        </nav>
+
+        <div class="container header-grid">
+            <a href="index.html" class="logo">UA<span>Style</span></a>
+            <div class="user-menu">
+                <div class="menu-item" style="cursor:pointer;">
+                    🛒 <span class="badge" id="cart-count">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container py-40 info-page">
+        <nav class="breadcrumbs">
+            <a href="index.html">Головна</a> / <span class="current">Доставка та повернення</span>
+        </nav>
+
+        <div class="info-content">
+            <h1>Доставка та Повернення</h1>
+            <p class="intro-text" style="text-align: center; max-width: 700px; margin: 0 auto 40px; font-size: 1.1rem; color: #666;">
+                Ми прагнемо, щоб кожна покупка в <strong>UA Style</strong> приносила вам радість. Ознайомтеся з нашими правилами сервісу.
+            </p>
+
+            <section class="info-section">
+                <h2><i class="fas fa-truck"></i> Способи доставки</h2>
+                <div class="info-grid">
+                    <div class="info-card">
+                        <span class="icon">📦</span>
+                        <h3>Нова Пошта</h3>
+                        <p>У відділення або поштомат (1-3 дні). При замовленні від 3000 грн — <strong>безкоштовно!</strong></p>
+                    </div>
+                    <div class="info-card">
+                        <span class="icon">📫</span>
+                        <h3>Укрпошта</h3>
+                        <p>Доставка по Україні (4-7 днів). Можлива відправка за кордон за попереднім узгодженням.</p>
+                    </div>
+                    <div class="info-card">
+                        <span class="icon">🏠</span>
+                        <h3>Кур'єр НП</h3>
+                        <p>Адресна доставка до ваших дверей. Оплата згідно з тарифами перевізника.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="info-section">
+                <h2><i class="fas fa-wallet"></i> Оплата</h2>
+                <div class="highlight">
+                    <ul class="check-list">
+                        <li><strong>Післяплата:</strong> Оплата готівкою або карткою при отриманні у відділенні після огляду.</li>
+                        <li><strong>Онлайн-оплата:</strong> Швидка оплата Visa/Mastercard через захищену систему MonoPay/LiqPay.</li>
+                        <li><strong>Apple Pay / Google Pay:</strong> Миттєва оплата в один клік зі смартфона.</li>
+                        <li><strong>Реквізити:</strong> Оплата напряму на розрахунковий рахунок ФОП.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="info-section">
+                <h2><i class="fas fa-sync-alt"></i> Гарантія та Повернення</h2>
+                <p>Ви можете повернути або обміняти товар протягом <strong>14 днів</strong> з моменту отримання, згідно із Законом України.</p>
+                
+                <div style="margin-top: 30px;">
+                    <h3>Процедура повернення:</h3>
+                    <ol class="steps-list">
+                        <li>Повідомте менеджеру про намір за номером <a href="tel:+380965472737" style="color:var(--ua-blue); font-weight:bold;">+38 (096) 547-27-37</a>.</li>
+                        <li>Переконайтеся, що збережено товарний вигляд: відсутні сліди носіння, збережені всі бірки та упаковка.</li>
+                        <li>Відправте товар нам (дані для відправки надасть менеджер).</li>
+                        <li>Отримайте кошти на карту протягом 1-3 днів після перевірки нами посилки.</li>
+                    </ol>
+                </div>
+
+                <div class="note">
+                    <strong>Увага:</strong> Витрати на доставку повернення сплачує покупець. У разі виявлення виробничого браку — доставку оплачуємо ми.
+                </div>
+            </section>
+
+            <div class="contact-footer" style="text-align: center; background: var(--light); padding: 40px; border-radius: 20px; border: 1px solid #eee;">
+                <h3 style="color: var(--ua-blue); margin-bottom: 10px;">Залишилися питання?</h3>
+                <p style="margin-bottom: 25px;">Наша служба підтримки готова допомогти вам щодня з 9:00 до 20:00.</p>
+                <a href="tel:+380965472737" class="btn-primary" style="text-decoration: none;">
+                    <i class="fas fa-phone-alt"></i> Зателефонувати менеджеру
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2026 <strong>UA Style</strong>. Зроблено з любов'ю в Україні. 🇺🇦</p>
+        </div>
+    </footer>
+
+    <script>
+        // Проста логіка для відображення кошика (якщо він зберігається в localStorage)
+        document.addEventListener('DOMContentLoaded', () => {
+            const count = localStorage.getItem('cartCount') || 0;
+            document.getElementById('cart-count').innerText = count;
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>

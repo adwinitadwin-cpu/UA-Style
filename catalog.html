@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог одягу | UA Style</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --ua-blue: #003566; --ua-yellow: #ffc300; --dark: #1a1a1a; --light: #f8f9fa; }
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; color: #333; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+        .py-40 { padding: 40px 0; }
+        
+        /* Header */
+        .main-header { background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+        .nav-menu { background: var(--ua-blue); padding: 8px 0; }
+        .flex-nav { display: flex; gap: 20px; justify-content: center; }
+        .nav-link { color: white; text-decoration: none; font-size: 13px; font-weight: 600; opacity: 0.8; }
+        .nav-link.active { opacity: 1; color: var(--ua-yellow); }
+        .header-grid { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; }
+        .logo { font-size: 24px; font-weight: bold; text-decoration: none; color: var(--ua-blue); }
+        .logo span { color: var(--ua-yellow); }
+        .search-bar { display: flex; flex: 1; max-width: 400px; margin: 0 20px; }
+        .search-bar input { width: 100%; padding: 8px 15px; border: 1px solid #ddd; border-radius: 20px 0 0 20px; outline: none; }
+        .search-bar button { background: var(--ua-blue); color: white; border: none; padding: 0 15px; border-radius: 0 20px 20px 0; }
+        .badge { background: var(--ua-yellow); color: var(--ua-blue); padding: 2px 7px; border-radius: 50%; font-size: 12px; font-weight: bold; }
+
+        /* Catalog Layout */
+        .catalog-layout { display: grid; grid-template-columns: 250px 1fr; gap: 30px; margin-top: 30px; }
+        .filters-sidebar { background: var(--light); padding: 20px; border-radius: 12px; height: fit-content; }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
+        
+        /* Cards */
+        .product-card { border: 1px solid #eee; border-radius: 12px; overflow: hidden; transition: 0.3s; background: #fff; }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .product-image-wrapper { aspect-ratio: 3/4; background: #f9f9f9; overflow: hidden; }
+        .product-image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+        .product-details { padding: 15px; }
+        .product-details h3 { margin: 10px 0; font-size: 16px; }
+        .price-main { font-size: 18px; font-weight: bold; color: var(--ua-blue); }
+        .add-to-cart-btn { width: 100%; padding: 10px; background: white; border: 2px solid var(--ua-blue); color: var(--ua-blue); border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 10px; }
+        
+        .size-select { width: 100%; padding: 5px; border-radius: 5px; border: 1px solid #ddd; margin-top: 5px; }
+
+        footer { background: var(--dark); color: white; padding: 40px 0; margin-top: 50px; }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <nav class="nav-menu">
+            <div class="container flex-nav">
+                <a href="index.html" class="nav-link">Головна</a>
+                <a href="catalog.html" class="nav-link active">Каталог</a>
+                <a href="checkout.html" class="nav-link">Оформлення</a>
+            </div>
+        </nav>
+        <div class="container header-grid">
+            <a href="index.html" class="logo">UA<span>Style</span></a>
+            <div class="search-bar">
+                <input type="text" id="catalog-search" placeholder="Пошук товарів...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            <div id="cart-btn" style="cursor:pointer;">
+                🛒 Кошик <span class="badge" id="cart-count">0</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="catalog-layout">
+            <aside class="filters-sidebar">
+                <h4>Ціна до: <span id="price-val">5000</span> ₴</h4>
+                <input type="range" min="500" max="10000" value="5000" id="price-range" style="width: 100%;">
+                <button class="add-to-cart-btn" style="background: var(--ua-blue); color: white;">Застосувати</button>
+            </aside>
+
+            <section class="products-grid">
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="https://tse3.mm.bing.net/th/id/OIP.9MPAMvqQQIXw8QmG7zjR6AHaLG?pid=Api&h=220&P=0">
+                    </div>
+                    <div class="product-details">
+                        <h3>Лляна сукня "Волошка"</h3>
+                        <select class="size-select" id="size-1">
+                            <option value="S">S</option>
+                            <option value="M" selected>M</option>
+                            <option value="L">L</option>
+                        </select>
+                        <div class="price-main">3200 ₴</div>
+                        <button class="add-to-cart-btn" onclick="addToCart(1, 'Сукня Волошка', 3200, event)">В кошик</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="https://tse3.mm.bing.net/th/id/OIP.o4Fdd1X8OPJfAYQ2cf-CcQHaLH?pid=Api&h=220&P=0">
+                    </div>
+                    <div class="product-details">
+                        <h3>Вишиванка "Сила"</h3>
+                        <select class="size-select" id="size-2">
+                            <option value="M">M</option>
+                            <option value="L" selected>L</option>
+                            <option value="XL">XL</option>
+                        </select>
+                        <div class="price-main">2150 ₴</div>
+                        <button class="add-to-cart-btn" onclick="addToCart(2, 'Вишиванка Сила', 2150, event)">В кошик</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        // --- ЛОГІКА ТЕЛЕГРАМУ ТА КОШИКА ---
+        const TELEGRAM_BOT_TOKEN = '8780649579:AAFigMLzgyUs6Z1nX9optwtugIpdmymnoEA'; 
+        const TELEGRAM_CHAT_ID = '1334615761'; 
+
+        function updateCartBadge() {
+            const cart = JSON.parse(localStorage.getItem('ua_style_cart')) || [];
+            const count = cart.reduce((total, item) => total + item.quantity, 0);
+            document.getElementById('cart-count').innerText = count;
+        }
+
+        function addToCart(id, name, price, event) {
+            let cart = JSON.parse(localStorage.getItem('ua_style_cart')) || [];
+            const sizeElem = document.getElementById(`size-${id}`);
+            const selectedSize = sizeElem ? sizeElem.value : 'Універсальний';
+
+            const existingItem = cart.find(item => item.id === id && item.size === selectedSize);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ id, name, price, size: selectedSize, quantity: 1 });
+            }
+            
+            localStorage.setItem('ua_style_cart', JSON.stringify(cart));
+            updateCartBadge();
+            
+            // Анімація кнопки
+            const btn = event.currentTarget;
+            btn.innerHTML = "Додано! ✔";
+            btn.style.background = "#27ae60";
+            btn.style.color = "white";
+            setTimeout(() => {
+                btn.innerHTML = "В кошик";
+                btn.style.background = "";
+                btn.style.color = "";
+            }, 1000);
+        }
+
+        // --- ІНТЕРФЕЙС (Пошук та Ціна) ---
+        document.getElementById('price-range').addEventListener('input', (e) => {
+            document.getElementById('price-val').innerText = e.target.value;
+        });
+
+        document.getElementById('catalog-search').addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            document.querySelectorAll('.product-card').forEach(card => {
+                const title = card.querySelector('h3').innerText.toLowerCase();
+                card.style.display = title.includes(query) ? 'block' : 'none';
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', updateCartBadge);
+    </script>
+    <script src="script.js"></script>
+     </body>
+</html>

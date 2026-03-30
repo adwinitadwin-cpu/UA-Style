@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакти | UA Style</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --ua-blue: #003566;
+            --ua-yellow: #ffc300;
+            --dark: #1a1a1a;
+            --light: #f8f9fa;
+        }
+
+        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #fff; color: #333; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Шапка */
+        .main-header { background: white; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .nav-menu { background: var(--ua-blue); padding: 8px 0; }
+        .flex-nav { display: flex; gap: 20px; justify-content: center; }
+        .nav-link { color: white; text-decoration: none; font-size: 13px; font-weight: 600; opacity: 0.8; }
+        .nav-link.active { opacity: 1; color: var(--ua-yellow); }
+        .header-grid { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; }
+        .logo { font-size: 24px; font-weight: bold; text-decoration: none; color: var(--ua-blue); }
+        .logo span { color: var(--ua-yellow); }
+
+        /* Контент */
+        .contact-section { padding: 60px 0; display: grid; grid-template-columns: 1fr 1.5fr; gap: 50px; }
+        
+        .contact-info h2 { color: var(--ua-blue); margin-bottom: 20px; }
+        .contact-method { display: flex; gap: 15px; margin-bottom: 25px; }
+        .contact-method i { font-size: 20px; color: var(--ua-yellow); background: var(--ua-blue); width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 50%; }
+        .contact-method h4 { margin: 0 0 5px 0; color: var(--ua-blue); }
+        .contact-method p { margin: 0; color: #666; }
+
+        .contact-form { background: var(--light); padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; }
+        .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-size: 15px; }
+        .form-group input:focus { border-color: var(--ua-blue); outline: none; }
+        
+        .btn-send { background: var(--ua-blue); color: white; border: none; padding: 15px 30px; border-radius: 8px; font-weight: bold; cursor: pointer; width: 100%; transition: 0.3s; }
+        .btn-send:hover { background: var(--dark); transform: translateY(-2px); }
+
+        @media (max-width: 768px) {
+            .contact-section { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <nav class="nav-menu">
+            <div class="container flex-nav">
+                <a href="index.html" class="nav-link">Головна</a>
+                <a href="catalog.html" class="nav-link">Каталог одягу</a>
+                <a href="checkout.html" class="nav-link">Оформлення</a>
+                <a href="info.html" class="nav-link">Доставка та повернення</a>
+                <a href="contact.html" class="nav-link active">Контакти</a>
+            </div>
+        </nav>
+        <div class="container header-grid">
+            <a href="index.html" class="logo">UA<span>Style</span></a>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="contact-section">
+            <div class="contact-info">
+                <h2>Зв'яжіться з нами</h2>
+                <p>Маєте запитання щодо нашої колекції або статусу замовлення? Ми завжди раді допомогти!</p>
+                
+                <div class="contact-method">
+                    <i class="fas fa-phone-alt"></i>
+                    <div>
+                        <h4>Телефон</h4>
+                        <p><a href="tel:+380965472737" style="color: inherit; text-decoration: none;">+38 (096) 547-27-37</a></p>
+                    </div>
+                </div>
+
+                <div class="contact-method">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h4>Email</h4>
+                        <p>info@ua-style.com.ua</p>
+                    </div>
+                </div>
+
+                <div class="contact-method">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h4>Наш офіс</h4>
+                        <p>м. Рахів, вул. Довженка, </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form">
+                <form onsubmit="event.preventDefault(); alert('Повідомлення надіслано!');">
+                    <div class="form-group">
+                        <label>Ваше ім'я</label>
+                        <input type="text" placeholder="Олександр" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" placeholder="mail@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Ваше повідомлення</label>
+                        <textarea rows="5" placeholder="Напишіть ваше запитання..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn-send">Надіслати повідомлення</button>
+                </form>
+            </div>
+        </div>
+    </main>
+<script src="script.js"></script>
+</body>
+</html>
